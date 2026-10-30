@@ -140,7 +140,8 @@
             type: 'DEEPSEEK_RECORD_USER',
             sessionId: sessionId,
             messageId: 'user_' + Date.now(),
-            text: userPrompt
+            text: userPrompt,
+            title: null
           }, '*');
         }
 
