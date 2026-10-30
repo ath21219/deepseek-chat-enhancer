@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "DeepSeek Chat Enhancer",
+  "version": "1.0",
+  "description": "Improve DeepSeek Chat experience.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://chat.deepseek.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "sidebar_action": {
+    "default_title": "DeepSeek Response Log",
+    "default_panel": "sidebar.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["https://chat.deepseek.com/*"]
+    }
+  ]
+}

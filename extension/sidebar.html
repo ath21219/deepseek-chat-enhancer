@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root {
+      --bg-color: #f9f9fb;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --border-color: #e0e0e0;
+      --user-bg: #e8f0fe;
+      --assistant-bg: #f1f3f4;
+      --accent-color: #1a73e8;
+      --time-color: #777777;
+      --code-bg: rgba(0,0,0,0.06);
+      --blockquote-border: rgba(0,0,0,0.2);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #18191a;
+        --card-bg: #242526;
+        --text-color: #e4e6eb;
+        --border-color: #393a3b;
+        --user-bg: #2d3748;
+        --assistant-bg: #3a3b3c;
+        --accent-color: #4dabf7;
+        --time-color: #a0aec0;
+        --code-bg: rgba(255,255,255,0.1);
+        --blockquote-border: rgba(255,255,255,0.3);
+      }
+    }
+
+    body { font-family: sans-serif; padding: 6px; margin: 0; background: var(--bg-color); color: var(--text-color); font-size: 12px; }
+    h2 { font-size: 13px; margin: 0 0 6px 4px; }
+
+    .session-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 4px; margin-bottom: 6px; overflow: hidden; }
+
+    details > summary {
+      padding: 6px 8px;
+      font-weight: bold;
+      color: var(--accent-color);
+      cursor: pointer;
+      background: rgba(0,0,0,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+    details > summary:hover { background: rgba(0,0,0,0.05); }
+
+    .session-actions { display: flex; gap: 4px; align-items: center; }
+    .btn-action { font-size: 11px; cursor: pointer; background: transparent; border: 1px solid var(--border-color); border-radius: 3px; padding: 1px 5px; color: var(--text-color); line-height: 1.2; }
+    .btn-action:hover { background: rgba(0,0,0,0.1); }
+    .btn-delete:hover { background: #ffe3e3; border-color: #ffa8a8; }
+
+    .session-content { padding: 6px; border-top: 1px solid var(--border-color); }
+
+    .msg-wrapper { position: relative; margin-bottom: 6px; }
+    .msg-box { padding: 6px 24px 6px 8px; border-radius: 4px; word-break: break-word; font-family: sans-serif; font-size: 11px; line-height: 1.4; }
+    .msg-user { background: var(--user-bg); border-left: 2px solid var(--accent-color); }
+    .msg-assistant { background: var(--assistant-bg); border-left: 2px solid #10b981; }
+
+    .msg-box p { margin: 0 0 4px 0; }
+    .msg-box p:last-child { margin-bottom: 0; }
+    .msg-box code { background: var(--code-bg); padding: 2px 4px; border-radius: 3px; font-family: monospace; font-size: 10.5px; }
+    .msg-box pre { background: var(--code-bg); padding: 6px; border-radius: 4px; overflow-x: auto; margin: 4px 0; }
+    .msg-box pre code { background: transparent; padding: 0; }
+    .msg-box ul, .msg-box ol { margin: 2px 0 4px 16px; padding: 0; }
+    .msg-box li { margin-bottom: 2px; }
+    .msg-box hr { border: none; border-top: 1px solid var(--border-color); margin: 6px 0; }
+    .msg-box blockquote { border-left: 3px solid var(--blockquote-border); margin: 4px 0; padding-left: 6px; opacity: 0.85; }
+
+    .msg-footer { display: flex; justify-content: flex-end; align-items: center; margin-top: 2px; gap: 4px; }
+    .msg-time { font-size: 9px; color: var(--time-color); }
+
+    .btn-copy {
+      position: absolute;
+      font-size: 10px;
+      cursor: pointer;
+      background: rgba(0,0,0,0.08);
+      border: none;
+      border-radius: 2px;
+      padding: 1px 4px;
+      color: var(--text-color);
+      opacity: 0.35;
+      z-index: 2;
+    }
+    .btn-copy-top { top: 2px; right: 2px; }
+    .btn-copy-bottom { bottom: 18px; right: 2px; }
+
+    .msg-wrapper:hover .btn-copy { opacity: 0.85; }
+    .btn-copy:hover { opacity: 1 !important; background: rgba(0,0,0,0.2) !important; }
+  </style>
+</head>
+<body>
+  <div id="session-container">Loading...</div>
+  <script src="sidebar.js"></script>
+</body>
+</html>
