@@ -57,7 +57,8 @@
 
           if (
             line.includes('CONTENT_FILTER') ||
-            (data.v && Array.isArray(data.v) && data.v.some(item => item.p === 'status' && item.v === 'CONTENT_FILTER'))
+            (data.v && Array.isArray(data.v) && data.v.some(item => item.p === 'status' && item.v === 'CONTENT_FILTER')) ||
+            (data.o !== undefined && (data.o === 'BATCH' || data.o === 'SET'))
           ) {
             continue;
           }
